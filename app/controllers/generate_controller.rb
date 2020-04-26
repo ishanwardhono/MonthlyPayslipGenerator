@@ -1,7 +1,8 @@
 class GenerateController < ApplicationController
     def show
-        pay = Payslip.new(1,2,3)
-        generatedPayslip = Employee.new('annual_salary', pay)
-        render json: generatedPayslip, status: :ok
+        generatedPayslip = GeneratePayslip.new(params[:annual_salary])
+        payslip = generatedPayslip.taxComputation()
+        employee = Employee.new(params[:employee_name], payslip)
+        render json: employee, status: :ok
     end 
 end
