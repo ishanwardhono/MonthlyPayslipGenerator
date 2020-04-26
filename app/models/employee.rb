@@ -1,3 +1,4 @@
+
 class Employee < Payslip
     def initialize(name, payslip)
         @employee_name = name
